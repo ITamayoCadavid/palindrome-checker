@@ -1,90 +1,44 @@
-# Gradebook App (JavaScript)
+# Palindrome Checker
 
 ## 📌 Descripción
-Esta es una aplicación simple hecha en **JavaScript puro** que calcula:
-- El promedio de notas de la clase.
-- La calificación de un estudiante en formato de letra.
-- Si el estudiante aprobó o no.
+Este es un proyecto en **JavaScript, HTML y CSS** que permite comprobar si una palabra o frase es un **palíndromo** (se lee igual de izquierda a derecha que de derecha a izquierda).
 
-El objetivo es practicar estructuras de control, funciones y arreglos en JavaScript.
+Si el usuario no ingresa ningún valor y presiona el botón, aparece un mensaje de alerta:  
+**"Please input a value."**
 
 ---
 
 ## ⚙️ Lógica usada
 
-### 1. Cálculo del promedio (`getAverage`)
-- Se recorre el arreglo de notas (`studentScores`) con un ciclo `for`.
-- Se suman todos los valores.
-- Se divide entre la cantidad de estudiantes para obtener el promedio.
-- Se redondea a un decimal con `toFixed(1)`.
+### 1. Capturar el input
+- Se obtiene el valor del campo de texto con `document.getElementById("text-input").value`.
 
-👉 Ejemplo:  
-`[92, 88, 12, 77]` → promedio = `(92 + 88 + 12 + 77) / 4 = 67.25`
+### 2. Validar que no esté vacío
+- Si el input está vacío, se muestra un `alert("Please input a value.")`.
 
----
+### 3. Limpiar el texto
+- Se eliminan caracteres no alfanuméricos y espacios usando expresiones regulares (`replace(/[^A-Za-z0-9]/g, "")`).
+- Se convierte todo a minúsculas con `.toLowerCase()` para evitar problemas de mayúsculas/minúsculas.
 
-### 2. Conversión de nota numérica a letra (`getGrade`)
-- Se usa una estructura `if - else if` para convertir el puntaje en letras:  
-  - `100 → A++`
-  - `90 a 99 → A`
-  - `80 a 89 → B`
-  - `70 a 79 → C`
-  - `60 a 69 → D`
-  - `< 60 → F`
+### 4. Verificar si es palíndromo
+- Se compara el texto original con su versión invertida (`split("").reverse().join("")`).
+- Si son iguales → es palíndromo.  
+- Si no son iguales → no es palíndromo.
 
-👉 Ejemplo:  
-`77 → C`  
-`100 → A++`
+### 5. Mostrar resultado
+- Se inserta el resultado dentro del `div` con id `result`.
 
 ---
 
-### 3. Verificar si aprueba (`hasPassingGrade`)
-- Se obtiene la nota en letra del estudiante.
-- Si es diferente de `"F"`, significa que aprobó.
-- Devuelve un valor booleano (`true` o `false`).
+## 🖥️ Explicación del HTML
+El archivo `index.html` contiene:
+- Un **input** (`#text-input`) donde el usuario escribe la palabra o frase.
+- Un **botón** (`#check-btn`) que activa la validación al hacer clic.
+- Un **div** (`#result`) donde aparece el mensaje indicando si es palíndromo o no.
 
-👉 Ejemplo:  
-`77 → C → true`  
-`50 → F → false`
+Ejemplo:
+```html
+<input id="text-input" type="text" placeholder="Escribe una palabra">
+<button id="check-btn">Check</button>
+<div id="result"></div>
 
----
-
-### 4. Mensaje final (`studentMsg`)
-- Se calcula el **promedio de la clase**.
-- Se convierte la nota del estudiante a letra.
-- Se valida si aprobó o no.
-- Se construye un mensaje concatenando los resultados.
-
-👉 Ejemplo:  
-`studentMsg(studentScores, 77)` →  
-**"Promedio de la clase: 71.7. Tu nota: C. Has aprobado el curso."**
-
----
-
-## 🖥️ Explicación del HTML y CSS usados
-En el proyecto relacionado con el **validador de texto** (cuando pedías que saliera un `alert` al no escribir nada):
-
-- **HTML (`index.html`):**
-  - Se utilizó un `input` de texto con `id="text-input"` para que el usuario escriba.
-  - Se creó un botón con `id="check-btn"` que activa la validación.
-  - Se agregó un contenedor (`div`) para mostrar mensajes o resultados.
-
-- **CSS (`style.css`):**
-  - Se aplicó un diseño sencillo para centrar el contenido en pantalla.
-  - El botón se estilizó con bordes redondeados, colores y `hover` para interacción.
-  - Se usó `flexbox` para organizar los elementos en columna.
-
-Esto hace que el usuario tenga una interfaz básica donde puede interactuar y probar la lógica.
-
----
-
-## 🚀 Uso
-1. Copia el archivo `script.js`.
-2. Ábrelo en un navegador (consola) o en Node.js.
-3. Ejecuta los ejemplos y revisa los resultados en la consola.
-
----
-
-## 🛠️ Tecnologías
-- JavaScript (puro)
-- HTML y CSS (para la parte visual del

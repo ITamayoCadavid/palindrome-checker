@@ -8,25 +8,53 @@ Si el usuario no ingresa ningún valor y presiona el botón, aparece un mensaje 
 
 ---
 
-## ⚙️ Lógica usada
+## ⚙️ Lógica del programa
 
-### 1. Capturar el input
-- Se obtiene el valor del campo de texto con `document.getElementById("text-input").value`.
+1. **Obtener el texto ingresado**  
+   Se toma el valor del input cuando el usuario hace clic en el botón **Check**:
+   ```js
+   const text = document.getElementById("text-input").value;
 
 ### 2. Validar que no esté vacío
 - Si el input está vacío, se muestra un `alert("Please input a value.")`.
+- if (text === "") {
+  alert("Please input a value.");
+  return;
+}
 
 ### 3. Limpiar el texto
 - Se eliminan caracteres no alfanuméricos y espacios usando expresiones regulares (`replace(/[^A-Za-z0-9]/g, "")`).
+  text.replace(/[^A-Za-z0-9]/g, "")
+
 - Se convierte todo a minúsculas con `.toLowerCase()` para evitar problemas de mayúsculas/minúsculas.
+  .toLowerCase()
 
 ### 4. Verificar si es palíndromo
 - Se compara el texto original con su versión invertida (`split("").reverse().join("")`).
+  const reversed = cleanText.split("").reverse().join("");
+
 - Si son iguales → es palíndromo.  
 - Si no son iguales → no es palíndromo.
 
 ### 5. Mostrar resultado
 - Se inserta el resultado dentro del `div` con id `result`.
+  result.textContent = text + " is a palindrome.";
+  result.textContent = text + " is not a palindrome.";
+
+  
+## 🔄 Diagrama de flujo
+
+```mermaid
+flowchart TD
+    A[Usuario ingresa texto] --> B[Click en Check]
+    B --> C{¿Campo vacío?}
+    C -- Sí --> D[Mostrar alerta "Please input a value"]
+    C -- No --> E[Convertir a minúsculas]
+    E --> F[Eliminar caracteres no alfanuméricos]
+    F --> G[Comparar texto con su reverso]
+    G -- Igual --> H[Mostrar: "Es un palíndromo"]
+    G -- Diferente --> I[Mostrar: "No es un palíndromo"]
+
 
 ---
 

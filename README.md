@@ -62,9 +62,4 @@ El archivo `index.html` contiene:
 - Un **botón** (`#check-btn`) que activa la validación al hacer clic.
 - Un **div** (`#result`) donde aparece el mensaje indicando si es palíndromo o no.
 
-Ejemplo:
-```html
-<input id="text-input" type="text" placeholder="Escribe una palabra">
-<button id="check-btn">Check</button>
-<div id="result"></div>
 

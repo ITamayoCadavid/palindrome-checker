@@ -44,8 +44,6 @@ Si el usuario no ingresa ningún valor y presiona el botón, aparece un mensaje 
   
 ## 🔄 Diagrama de flujo
 
-```mermaid
-flowchart TD
     A[Usuario ingresa texto] --> B[Click en Check]
     B --> C{¿Campo vacío?}
     C -- Sí --> D[Mostrar alerta "Please input a value"]
